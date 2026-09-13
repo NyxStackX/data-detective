@@ -1,0 +1,69 @@
+
+DATASET VALIDATION
+------------------------------------------------------------------
+
+Tables
+  Entities                                     PASS   207 lignes
+  Employees                                    PASS   478 lignes
+  Accounts                                     PASS   345 lignes
+  Transactions                                 PASS   110,463 lignes
+  Investments                                  PASS   180 lignes
+  Companies                                    PASS   196 lignes
+  Company_officers                             PASS   292 lignes
+  Entity_relationships                         PASS   402 lignes
+  Audit_logs                                   PASS   70,076 lignes
+
+Cles
+  Unicite des cles primaires                   PASS
+
+Integrite
+  Cles etrangeres                              PASS
+  Montants strictement positifs                PASS
+  Source et destination distinctes             PASS
+  Ressources de type transaction existantes    PASS
+
+Dates
+  Transactions dans la periode                 PASS   0 hors periode
+  Comptes ouverts a la date d'operation        PASS   0 avant ouverture, 0 apres cloture
+  Embauches posterieures a la creation de l'entite PASS
+  Sorties posterieures aux embauches           PASS
+  Journaux dans la periode                     PASS   0 hors periode
+
+Devises
+  Devise conforme au compte source             PASS
+  Devises referencees                          PASS
+  Conversion EUR coherente                     PASS
+
+Coherence
+  Statut RH coherent avec la date de sortie    PASS
+  Niveaux d'autorisation dans [1,5]            PASS
+  Absence de cycle dans la structure           PASS
+
+Etancheite
+  Absence de colonne revelatrice               PASS
+  Libelles du circuit non distinctifs          PASS
+
+Enquete
+  Transactions du circuit presentes            PASS   64/64
+  Reconstitution du montant de l'affaire       PASS   47,800,000 EUR pour 47,800,000 attendus
+  EV-01 concentration sous le seuil            PASS   38 sous / 17 au-dessus (x2.2)
+  EV-01 aucun paiement du circuit au-dessus du seuil PASS
+  EV-02 concentration en fin de trimestre      PASS   circuit 100 % vs socle 9.0%
+  EV-03 contreparties d'Aurum limitees         PASS   3 sources
+  EV-03 reversement integral                   PASS   entrees 16,600,000 / sorties 16,600,000
+  EV-03 remboursements sans pret d'origine     PASS   14 remboursements, 0 decaissement
+  EV-04 dirigeant d'Aurum rapprochable du fichier RH PASS
+  EV-04 faux positifs de rapprochement presents PASS   77 rapprochements bruts
+  EV-05 rendement hors cohorte                 PASS   z = 4.6 sur 8 comparables
+  EV-06 sequence d'acces presente              PASS   21 acces nocturnes hors zone
+  EV-06 autres profils comparables presents    PASS   5 employes au-dessus de 8 acces
+  Circuit non resoluble par simple tri sur le montant PASS   0 paiements du circuit dans le top 300
+  Circuit dilue dans le volume                 PASS   0.0579% des transactions
+
+Fausses pistes
+  Transactions des fausses pistes presentes    PASS
+  FL-05 taux d'annulation distinctif           PASS   Milan 3.08% vs groupe 0.71%
+  FL-02 signature systematique du CFO          PASS   84% des operations > 1 M EUR, 0 dans le circuit
+
+------------------------------------------------------------------
+RESULTAT GLOBAL                                PASS
