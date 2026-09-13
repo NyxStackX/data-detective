@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: data-detective-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: data_detective
+      POSTGRES_USER: detective
+      POSTGRES_PASSWORD: detective
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
