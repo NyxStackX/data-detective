@@ -1,4 +1,4 @@
-# LOGIQUE DE L'ENQUÊTE — CASE #001
+# LOGIQUE DE L'ENQUÊTE - CASE #001
 
 > **DOCUMENT INTERNE.** Décrit la solution. À garder hors du build public.
 > Complément : `analysis_playbook.md` (les requêtes), `case_truth.json` (les
@@ -15,7 +15,7 @@ ont guidé l'encodage.
 **Aucune anomalie n'est visible à l'échelle d'une transaction.** Chacune des
 64 opérations du circuit est, prise isolément, parfaitement banale : un montant
 plausible, un libellé courant, un approbateur habilité, une date ouvrée, une
-devise cohérente. L'anomalie n'existe qu'au niveau de la *série* — sa
+devise cohérente. L'anomalie n'existe qu'au niveau de la *série* - sa
 distribution, son calendrier, sa topologie.
 
 **Chaque indice est indépendant des autres.** Six chemins d'analyse distincts
@@ -38,7 +38,7 @@ distincts, portés par deux personnes aux motivations opposées.
 | | Montant | Nature | Auteur |
 |---|---:|---|---|
 | **A** | 31,2 M€ | Perte réelle sur un investissement, dissimulée | Philippe Dautray |
-| **B** | 13,5 M€ | Flux circulaires — sortis puis revenus dans le groupe | Philippe Dautray |
+| **B** | 13,5 M€ | Flux circulaires - sortis puis revenus dans le groupe | Philippe Dautray |
 | **C** | 3,1 M€ | Détournement personnel | Julien Vasseur |
 
 **Chronologie.**
@@ -65,7 +65,7 @@ ouvrés d'un trimestre. Total : 16,6 M€.
 
 Aurum reverse la totalité. 13,5 M€ transitent par **Helvetia Trade Solutions**,
 à Zoug, et reviennent chez Moretti Capital Partners sous l'apparence de
-remboursements d'une facilité structurée — une facilité qui n'a jamais été
+remboursements d'une facilité structurée - une facilité qui n'a jamais été
 décaissée. C'est la composante B : l'argent est encore dans le groupe.
 
 Julien Vasseur, trésorier adjoint, exécute ces paiements. Il comprend le
@@ -114,8 +114,8 @@ naïf produise des faux positifs :
 - Le référentiel classe Aurum en `risk_level = medium`, parmi 61 autres
 
 **Les fausses pistes sont dimensionnées pour attirer.** 442 transactions leur
-sont rattachées, sept fois le volume de la vraie piste. La plus grosse — une
-acquisition hôtelière de 12,4 M€ à Abu Dhabi — est quatre fois plus visible en
+sont rattachées, sept fois le volume de la vraie piste. La plus grosse - une
+acquisition hôtelière de 12,4 M€ à Abu Dhabi - est quatre fois plus visible en
 montant que n'importe quel paiement du circuit.
 
 **Rien ne trahit l'ordre de fabrication.** Les `transaction_id` sont attribués

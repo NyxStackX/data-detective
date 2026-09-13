@@ -1,4 +1,4 @@
-# DICTIONNAIRE DE DONNÉES — DATA DETECTIVE / CASE #001
+# DICTIONNAIRE DE DONNÉES - DATA DETECTIVE / CASE #001
 
 Dataset synthétique généré par `scripts/generate_data.py` (seed `2026`).
 Période couverte : **2024-01-01 → 2025-12-31**.
@@ -89,7 +89,7 @@ Le groupe Moretti occupe les identifiants `ENT-0001` à `ENT-0011`.
 | `authorization_level` | int | Niveau d'habilitation | `4` | 1 à 5 | Conditionne les seuils d'approbation |
 | `status` | enum | Statut | `active` | `active`, `inactive` | |
 
-**Niveaux d'habilitation** — 1 : administratif, 2 : opérationnel, 3 : encadrement,
+**Niveaux d'habilitation** - 1 : administratif, 2 : opérationnel, 3 : encadrement,
 4 : direction fonctionnelle, 5 : direction générale.
 
 ---
@@ -135,7 +135,7 @@ Table centrale. 110 463 lignes, 15 colonnes, 17 Mo.
 | `authorized_by` | string | Approbateur | `EMP-0003` | `EMP-nnnn`, `SYSTEM_AUTO` (< 25 k€) ou `EXTERNAL` | FK → `employees.employee_id` |
 | `created_by` | string | Saisie par | `EMP-0004` | Idem | FK → `employees.employee_id` |
 
-**Valeurs de `transaction_type`** — `payment`, `service_payment`, `transfer`,
+**Valeurs de `transaction_type`** - `payment`, `service_payment`, `transfer`,
 `internal_transfer`, `investment`, `acquisition`, `refund`, `dividend`, `loan`,
 `repayment`, `salary`.
 
@@ -153,7 +153,7 @@ Le seuil de **750 000 EUR** est le seuil de double approbation. Il n'est
 mentionné nulle part dans les données elles-mêmes : il se déduit de la
 distribution des approbateurs.
 
-**Répartition observée** — `completed` 108 466, `cancelled` 787, `pending` 742,
+**Répartition observée** - `completed` 108 466, `cancelled` 787, `pending` 742,
 `failed` 468. Devises : EUR 61 499, GBP 22 256, USD 9 261, AED 8 847, CHF 8 600.
 
 ---
@@ -195,8 +195,8 @@ groupe.
 | `risk_level` | enum | Note de risque référentiel | `medium` | `low` 132, `medium` 61, `high` 3 | |
 | `status` | enum | Statut | `active` | | |
 
-**Attention à `risk_level`.** Il est calculé sur des critères publics —
-juridiction, ancienneté, secteur — et reflète donc le profil administratif de la
+**Attention à `risk_level`.** Il est calculé sur des critères publics -
+juridiction, ancienneté, secteur - et reflète donc le profil administratif de la
 société, pas son comportement. Une société parfaitement régulière peut y être
 notée `high`, et l'inverse est également vrai. S'en servir comme filtre de
 suspicion est une erreur méthodologique que le dataset sanctionne.
@@ -224,7 +224,7 @@ dates, entité de rattachement.
 
 ## `entity_relationships.csv`
 
-Relations **déclarées** dans le référentiel groupe — c'est-à-dire ce qu'une
+Relations **déclarées** dans le référentiel groupe - c'est-à-dire ce qu'une
 direction financière documente formellement.
 
 | Colonne | Type | Description | Exemple | Contraintes | Relation |
@@ -265,7 +265,7 @@ Répartition des actions : `approve_transaction` 18 001, `login` 10 426,
 **Deux pièges volontaires.** Les profils conformité et audit génèrent
 structurellement trois à quatre fois plus de consultations que les autres :
 c'est leur métier. Et les connexions tardives depuis une région étrangère
-existent pour de nombreux collaborateurs — déplacements, décalage horaire,
+existent pour de nombreux collaborateurs - déplacements, décalage horaire,
 astreintes de clôture. Ni l'horaire ni la région ne sont discriminants pris
 isolément.
 

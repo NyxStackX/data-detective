@@ -1,4 +1,4 @@
-# RAPPORT DE QUALITÉ — DATASET CASE #001
+# RAPPORT DE QUALITÉ - DATASET CASE #001
 
 Généré avec `SEED = 2026`, période 2024-01-01 → 2025-12-31.
 Validation complète : **PASS** (45 contrôles, 0 échec).
@@ -91,8 +91,8 @@ distribution. C'est le comportement réel de ce test, souvent surestimé. Appliq
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | 88 | 89 | 96 | 101 | 110 | 108 | 104 | 100 | 101 | 100 | 94 | 109 |
 
-Les profils sont propres à chaque secteur — pointe estivale pour le yachting et
-l'hôtellerie, pointe de décembre pour la joaillerie et la restauration — et
+Les profils sont propres à chaque secteur - pointe estivale pour le yachting et
+l'hôtellerie, pointe de décembre pour la joaillerie et la restauration - et
 **stables entre 2024 et 2025**. C'est ce qui permet d'écarter la fausse piste
 FL-04 : un pic reproduit à l'identique d'une année sur l'autre est une
 habitude, pas un événement.
@@ -122,7 +122,7 @@ détectable, la validation échoue même avec une intégrité référentielle pa
 
 **Discrétion du circuit.** Le plus gros des 24 paiements se classe **488ᵉ** sur
 110 463 en tri décroissant sur `amount_eur`. Aucun ne figure dans le top 300.
-Le circuit représente 0,058 % du nombre d'opérations et 2,0 % du volume — cette
+Le circuit représente 0,058 % du nombre d'opérations et 2,0 % du volume - cette
 dernière part étant portée à 96 % par l'investissement initial de 31,2 M€, qui
 est une opération légitime dans sa forme.
 
@@ -163,17 +163,17 @@ des autres : les identifiants et les personnages clés restent stables entre deu
 
 - `risk_level` ne compte que 3 sociétés en `high`. Un joueur qui filtre sur ce
   champ tombe immédiatement sur Zephyr, la fausse piste FL-03. C'est
-  intentionnel — le champ est un piège méthodologique — mais l'échantillon est
+  intentionnel - le champ est un piège méthodologique - mais l'échantillon est
   étroit.
 - Les 24 paiements partagent le même couple `created_by` / `authorized_by`. Un
   `GROUP BY created_by, authorized_by` sur les `service_payment` remonte le
   circuit d'un coup. Le bruit existe : Vasseur a saisi plusieurs milliers
   d'opérations légitimes et Dautray en a approuvé autant, donc le couple ne
-  ressort pas d'un tri par volume — mais c'est le raccourci le plus court du
+  ressort pas d'un tri par volume - mais c'est le raccourci le plus court du
   dataset. À surveiller si le niveau de difficulté doit monter.
 - Le rythme strictement trimestriel du circuit est régulier au point qu'une
   simple analyse de périodicité le trouve. C'est cohérent avec le motif
-  narratif — un habillage de clôture — mais c'est un signal fort.
+  narratif - un habillage de clôture - mais c'est un signal fort.
 
 **Prochaine évolution utile.** Introduire deux ou trois prestataires de conseil
 légitimes ayant eux aussi un profil de facturation régulier et concentré en fin

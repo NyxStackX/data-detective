@@ -1,4 +1,4 @@
-# DATA DETECTIVE — Dataset CASE #001
+# DATA DETECTIVE - Dataset CASE #001
 
 Dataset synthétique pour l'enquête financière **THE MISSING FORTUNE**.
 Généré, validé et reproductible avec `SEED = 2026`.
@@ -13,16 +13,16 @@ data/
 │   ├── entities.csv
 │   ├── employees.csv
 │   ├── accounts.csv
-│   ├── transactions.csv        110 463 lignes — table centrale
+│   ├── transactions.csv        110 463 lignes - table centrale
 │   ├── investments.csv
 │   ├── companies.csv
 │   ├── company_officers.csv
 │   ├── entity_relationships.csv
 │   └── audit_logs.csv
-├── raw/                        vide — emplacement des sources externes
-├── processed/                  vide — emplacement des jeux dérivés
+├── raw/                        vide - emplacement des sources externes
+├── processed/                  vide - emplacement des jeux dérivés
 └── truth/
-    └── case_truth.json         ⚠ SOLUTION — jamais exposée au joueur
+    └── case_truth.json         ⚠ SOLUTION - jamais exposée au joueur
 
 scripts/
 ├── generate_data.py            génération complète
@@ -104,7 +104,7 @@ séparateur virgule, en-tête sur la première ligne, dates au format ISO.
 
 - **`amount_eur` est la colonne de comparaison.** `amount` est exprimé dans la
   devise du compte source. Toute analyse de distribution ou de seuil qui
-  utilise `amount` produira des résultats faux — c'est délibéré.
+  utilise `amount` produira des résultats faux - c'est délibéré.
 - **`risk_level` dans `companies` n'est pas un score de suspicion.** Il est
   calculé sur la juridiction, l'ancienneté et le secteur. S'en servir comme
   filtre mène droit à une fausse piste.
@@ -118,7 +118,7 @@ séparateur virgule, en-tête sur la première ligne, dates au format ISO.
 
 La dernière exécution de `validate_dataset.py` passe 45 contrôles sans échec :
 intégrité référentielle sur 17 relations, cohérence des dates, des devises et
-des statuts, étanchéité de la solution, et — surtout — un contrôle chiffré par
+des statuts, étanchéité de la solution, et - surtout - un contrôle chiffré par
 indice de l'enquête. Si une modification du générateur rend l'un des six indices
 indétectable, la validation échoue, même quand toutes les clés étrangères
 restent valides.

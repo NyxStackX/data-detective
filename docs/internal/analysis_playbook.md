@@ -1,6 +1,6 @@
-# PLAYBOOK D'ANALYSE — CASE #001
+# PLAYBOOK D'ANALYSE - CASE #001
 
-> **DOCUMENT INTERNE — RÉVÈLE LA SOLUTION.**
+> **DOCUMENT INTERNE - RÉVÈLE LA SOLUTION.**
 > À conserver hors du build public, au même titre que `data/truth/case_truth.json`.
 > Ne jamais servir depuis un endpoint accessible au joueur, ne jamais inclure
 > dans le bundle frontend.
@@ -35,7 +35,7 @@ l'exécution**. Aucun ne suffit seul.
 
 ---
 
-## EV-01 — Concentration des montants sous le seuil
+## EV-01 - Concentration des montants sous le seuil
 
 **Idée.** Un seuil d'approbation crée une frontière de comportement. Si
 quelqu'un veut éviter une seconde signature, ses montants s'accumulent juste
@@ -93,7 +93,7 @@ qu'ils restent sous le seuil qui déclencherait sa signature.
 
 ---
 
-## EV-02 — Concentration en fin de trimestre
+## EV-02 - Concentration en fin de trimestre
 
 ```python
 import pandas as pd, datetime as dt
@@ -122,7 +122,7 @@ mise en service du rapprochement bancaire automatique qui ferme le canal.
 
 ---
 
-## EV-03 — La composante fermée du graphe
+## EV-03 - La composante fermée du graphe
 
 **Ratio sortant / entrant par contrepartie.** Une société qui reverse la
 totalité de ce qu'elle reçoit n'a pas d'activité propre.
@@ -179,13 +179,13 @@ décaissement d'origine. C'est ici que se découvre la **composante B** : les
 Genève, elle, est précédée d'un `loan` de 9,6 M€ daté du 9 janvier 2025. C'est
 le test qui sépare le refinancement légitime du retour déguisé.
 
-**Destination de la composante C.** Le reste des sorties d'Aurum — 3,1 M€ en
-six virements libellés « Success fee » — part vers Sentinel Wealth Nominees
+**Destination de la composante C.** Le reste des sorties d'Aurum - 3,1 M€ en
+six virements libellés « Success fee » - part vers Sentinel Wealth Nominees
 Pte Ltd, à Singapour, et ne revient pas.
 
 ---
 
-## EV-04 — Rapprochement registre / fichier RH
+## EV-04 - Rapprochement registre / fichier RH
 
 ```sql
 SELECT o.first_name, o.last_name, c.company_name, emp.status, emp.termination_date,
@@ -212,7 +212,7 @@ d'origine :
 
 Seul Ben Othman présente la séquence complète : départ du groupe, puis création
 d'une société **quatre mois plus tard**, société qui devient ensuite un
-bénéficiaire majeur. Il venait de Moretti Capital Partners — la même entité que
+bénéficiaire majeur. Il venait de Moretti Capital Partners - la même entité que
 Dautray et Vasseur.
 
 **Méthodologie à retenir.** Un rapprochement nominatif ne prouve rien par
@@ -221,7 +221,7 @@ l'indice.
 
 ---
 
-## EV-05 — Rendement incompatible avec la cohorte
+## EV-05 - Rendement incompatible avec la cohorte
 
 ```sql
 SELECT i.investment_id, i.investment_date, ROUND(i.amount_eur) AS montant,
@@ -248,7 +248,7 @@ ORDER BY i.actual_return DESC;
 
 Le marché a subi un retournement généralisé au second semestre 2024. Toutes les
 lignes comparables sont dépréciées. Une seule affiche un rendement positif, et
-c'est la plus grosse du lot — **z-score de 4,6** par rapport à ses huit
+c'est la plus grosse du lot - **z-score de 4,6** par rapport à ses huit
 comparables.
 
 Le journal d'audit date la saisie : `EMP-0003` modifie `INV-0001` le
@@ -262,12 +262,12 @@ WHERE resource_id = 'INV-0001' ORDER BY timestamp;
 ```
 
 À noter : aucun `view_report` au nom d'`EMP-0001` sur cette ressource avant
-son approbation. Le dirigeant a validé sans consulter les pièces — faute de
+son approbation. Le dirigeant a validé sans consulter les pièces - faute de
 gouvernance, pas fraude.
 
 ---
 
-## EV-06 — Séquence d'accès précédant les paiements
+## EV-06 - Séquence d'accès précédant les paiements
 
 ```sql
 SELECT l.employee_id, e.last_name, COUNT(*) AS n
@@ -315,7 +315,7 @@ rattaché à Genève. Aucun des autres profils nocturnes ne présente de
 corrélation avec une série de paiements.
 
 Vasseur est par ailleurs `created_by` des 24 paiements, et Dautray
-`authorized_by` des 24 — mais ce critère seul ne suffit pas : Vasseur a saisi
+`authorized_by` des 24 - mais ce critère seul ne suffit pas : Vasseur a saisi
 plusieurs milliers d'opérations légitimes au titre de la centralisation de
 trésorerie, et Dautray en a approuvé autant.
 
@@ -331,9 +331,9 @@ print(loss + inflow)   # 47 800 000
 
 | Composante | Montant | Récupérable | Nature |
 |---|---:|---|---|
-| A — perte dissimulée sur Crescent Marina | 31 200 000 € | non | perte réelle |
-| B — flux circulaires revenus dans le groupe | 13 500 000 € | **oui** | comblement |
-| C — détournement personnel vers Singapour | 3 100 000 € | non | vol |
+| A - perte dissimulée sur Crescent Marina | 31 200 000 € | non | perte réelle |
+| B - flux circulaires revenus dans le groupe | 13 500 000 € | **oui** | comblement |
+| C - détournement personnel vers Singapour | 3 100 000 € | non | vol |
 | **Total** | **47 800 000 €** | | |
 
 **Perte nette réelle : 34,3 M€.** L'analyste qui s'arrête à « 47,8 M€ ont

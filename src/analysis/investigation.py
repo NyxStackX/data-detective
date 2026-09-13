@@ -522,7 +522,7 @@ def enrich_circuits(circuits, entities):
 def print_report(scores):
     print()
     print("=" * 80)
-    print("DATA DETECTIVE — AUTOMATED INVESTIGATION")
+    print("DATA DETECTIVE - AUTOMATED INVESTIGATION")
     print("=" * 80)
 
     print()
