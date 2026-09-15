@@ -4,6 +4,7 @@ from backend.app.api.routes.anomalies import router as anomalies_router
 from backend.app.api.routes.entities import router as entities_router
 from backend.app.api.routes.investigation import router as investigation_router
 from backend.app.api.routes.overview import router as overview_router
+from backend.app.api.routes.anomalies_repeated import router as repeated_anomalies_router
 from backend.app.api.routes.transactions import router as transactions_router
 
 
@@ -16,6 +17,7 @@ app = FastAPI(
 app.include_router(overview_router)
 app.include_router(transactions_router)
 app.include_router(anomalies_router)
+app.include_router(repeated_anomalies_router)
 app.include_router(entities_router)
 app.include_router(investigation_router)
 
