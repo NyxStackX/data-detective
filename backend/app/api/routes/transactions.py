@@ -1,6 +1,9 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Depends, Query
+from sqlalchemy import select
+from sqlalchemy.orm import Session
 
-from backend.app.services.data_loader import load_transactions
+from backend.app.database.dependencies import get_db
+from backend.app.models.transaction import Transaction
 
 
 router = APIRouter(prefix="/transactions", tags=["Transactions"])
@@ -12,32 +15,58 @@ def get_transactions(
     offset: int = Query(default=0, ge=0),
     transaction_type: str | None = Query(default=None),
     status: str | None = Query(default=None),
+    db: Session = Depends(get_db),
 ):
-    transactions = load_transactions()
+    query = select(Transaction)
 
     if transaction_type:
-        transactions = transactions[
-            transactions["transaction_type"].str.lower()
-            == transaction_type.lower()
-        ]
+        query = query.where(
+            Transaction.transaction_type.ilike(transaction_type)
+        )
 
     if status:
-        transactions = transactions[
-            transactions["status"].str.lower()
-            == status.lower()
-        ]
+        query = query.where(
+            Transaction.status.ilike(status)
+        )
 
-    total = len(transactions)
+    query = query.order_by(Transaction.transaction_date)
 
-    transactions = transactions.iloc[offset:offset + limit]
+    total = len(db.execute(query).scalars().all())
 
-    transactions["transaction_date"] = (
-        transactions["transaction_date"].dt.strftime("%Y-%m-%d")
+    transactions = (
+        db.execute(
+            query.offset(offset).limit(limit)
+        )
+        .scalars()
+        .all()
     )
 
     return {
         "total": total,
         "limit": limit,
         "offset": offset,
-        "transactions": transactions.to_dict(orient="records"),
+        "transactions": [
+            {
+                "transaction_id": transaction.transaction_id,
+                "transaction_date": transaction.transaction_date.isoformat(),
+                "source_account_id": transaction.source_account_id,
+                "destination_account_id": transaction.destination_account_id,
+                "source_entity_id": transaction.source_entity_id,
+                "destination_entity_id": transaction.destination_entity_id,
+                "amount": float(transaction.amount),
+                "currency": transaction.currency,
+                "amount_eur": (
+                    float(transaction.amount_eur)
+                    if transaction.amount_eur is not None
+                    else None
+                ),
+                "transaction_type": transaction.transaction_type,
+                "reference": transaction.reference,
+                "description": transaction.description,
+                "status": transaction.status,
+                "authorized_by": transaction.authorized_by,
+                "created_by": transaction.created_by,
+            }
+            for transaction in transactions
+        ],
     }
