@@ -7,6 +7,7 @@ from backend.app.api.routes.overview import router as overview_router
 from backend.app.api.routes.anomalies_repeated import router as repeated_anomalies_router
 from backend.app.api.routes.anomalies_night import router as night_anomalies_router
 from backend.app.api.routes.correlations import router as correlations_router
+from backend.app.api.routes.timeline import router as timeline_router
 from backend.app.api.routes.transactions import router as transactions_router
 
 
@@ -22,6 +23,7 @@ app.include_router(anomalies_router)
 app.include_router(repeated_anomalies_router)
 app.include_router(night_anomalies_router)
 app.include_router(correlations_router)
+app.include_router(timeline_router)
 app.include_router(entities_router)
 app.include_router(investigation_router)
 
