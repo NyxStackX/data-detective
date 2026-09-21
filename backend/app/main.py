@@ -6,6 +6,7 @@ from backend.app.api.routes.investigation import router as investigation_router
 from backend.app.api.routes.financial_flows import router as financial_flows_router
 from backend.app.api.routes.entity_network import router as entity_network_router
 from backend.app.api.routes.people import router as people_router
+from backend.app.api.routes.evidence import router as evidence_router
 from backend.app.api.routes.overview import router as overview_router
 from backend.app.api.routes.anomalies_repeated import router as repeated_anomalies_router
 from backend.app.api.routes.anomalies_night import router as night_anomalies_router
@@ -32,6 +33,7 @@ app.include_router(investigation_router)
 app.include_router(financial_flows_router)
 app.include_router(entity_network_router)
 app.include_router(people_router)
+app.include_router(evidence_router)
 
 
 @app.get("/")
