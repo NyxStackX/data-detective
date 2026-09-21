@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from backend.app.api.routes.anomalies import router as anomalies_router
 from backend.app.api.routes.entities import router as entities_router
 from backend.app.api.routes.investigation import router as investigation_router
+from backend.app.api.routes.financial_flows import router as financial_flows_router
 from backend.app.api.routes.overview import router as overview_router
 from backend.app.api.routes.anomalies_repeated import router as repeated_anomalies_router
 from backend.app.api.routes.anomalies_night import router as night_anomalies_router
@@ -26,6 +27,7 @@ app.include_router(correlations_router)
 app.include_router(timeline_router)
 app.include_router(entities_router)
 app.include_router(investigation_router)
+app.include_router(financial_flows_router)
 
 
 @app.get("/")
